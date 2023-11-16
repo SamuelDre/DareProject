@@ -3,6 +3,9 @@ package DoubleBalance;
 public class Account {
     private String name;
     private double balance;
+    private Account displayAccount;
+
+
     public Account(String name, double balance) {
         this.name = name;
         if (balance > 0.0){
@@ -25,5 +28,13 @@ public class Account {
 
     public String getName() {
         return name;
+    }
+
+    public void setDisplayAccount(Account account) {
+        this.displayAccount = account;
+    }
+
+    public Account getDisplayAccount() {
+        return displayAccount;
     }
 }
