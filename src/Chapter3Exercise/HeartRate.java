@@ -1,5 +1,5 @@
 package Chapter3Exercise;
-
+import java.util.Scanner;
 public class HeartRate {
     private String firstName;
     private String lastName;
@@ -9,15 +9,10 @@ public class HeartRate {
     private int ageInYears;
     private int maximumHeartRate;
     private double targetHeartRate;
-    private int currentYear=2023;
+    private int currentYear;
     private int beats=220;
-    public HeartRate(String firstName, String lastName, int monthOfBirth,  int dayOfBirth,int  yearOfBirth){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.monthOfBirth = monthOfBirth;
-        this.dayOfBirth =dayOfBirth;
-        this.yearOfBirth = yearOfBirth;
-    }
+
+
 
     public int getDayOfBirth() {
         return dayOfBirth;
@@ -58,9 +53,9 @@ public class HeartRate {
     public void setYearOfBirth(int yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
     }
-    public void setAgeInYears(int ageInYears){
-        ageInYears = currentYear - yearOfBirth;
-        this.ageInYears = ageInYears;
+    public void setAgeInYears(int ageYears){
+        ageYears = currentYear - yearOfBirth;
+        this.ageInYears = ageYears;
     }
     public int getAgeInYears(){
         return ageInYears;
@@ -70,9 +65,9 @@ public class HeartRate {
         return maximumHeartRate;
     }
 
-    public void setMaximumHeartRate(int maximumHeartRate) {
-        maximumHeartRate = beats - ageInYears;
-        this.maximumHeartRate = maximumHeartRate;
+    public void setMaximumHeartRate(int maximumRate) {
+        maximumRate = beats - ageInYears;
+        this.maximumHeartRate = maximumRate;
     }
 
     public void setBeats(int beats) {
@@ -99,5 +94,38 @@ public class HeartRate {
     public void setTargetHeartRate(double targetHeartRate) {
         targetHeartRate = 0.5 * maximumHeartRate;
         this.targetHeartRate = targetHeartRate;
+    }
+
+    public static void main(String[] args){
+        HeartRate heartRate = new HeartRate();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter first name:");
+        String firstName = scanner.nextLine();
+        heartRate.setFirstName(firstName);
+        System.out.print("Enter last name:");
+        String lastName = scanner.nextLine();
+        heartRate.setLastName(lastName);
+        System.out.printf("customer name is %s %s%n", heartRate.getFirstName(), heartRate.getLastName());
+
+        System.out.print("Enter month of birth:");
+        int monthOfBirth = scanner.nextInt();
+        heartRate.setMonthOfBirth(monthOfBirth);
+        System.out.print("Enter day of birth:");
+        int dayOfBirth = scanner.nextInt();
+        heartRate.setDayOfBirth(dayOfBirth);
+        System.out.print("Enter year of birth:");
+        int yearOfBirth = scanner.nextInt();
+        heartRate.setYearOfBirth(yearOfBirth);
+        System.out.printf("Date of birth %d:%d:%d%n", heartRate.getMonthOfBirth(), heartRate.getDayOfBirth(), heartRate.getYearOfBirth());
+
+        System.out.print("Enter current year:");
+        int currentYear = scanner.nextInt();
+        heartRate.setCurrentYear(currentYear);
+        System.out.printf("current year :%d%n", heartRate.getCurrentYear());
+
+
+        System.out.printf("Age:%d years%n", heartRate.getAgeInYears());
+        System.out.printf("maximum heart rate:%d%n", heartRate.getMaximumHeartRate());
+        System.out.printf("target heart rate: %.2f", heartRate.getTargetHeartRate());
     }
 }

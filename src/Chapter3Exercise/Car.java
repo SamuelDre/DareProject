@@ -16,7 +16,7 @@ public class Car {
     }
     public void setDiscount( double discountAmount){
         if (discountAmount >0){
-            price = price - discountAmount;
+            price = price - (price * discountAmount);
         }
 
     }
